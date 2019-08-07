@@ -11,7 +11,7 @@ mode_filter：该滤波器可以根据众数对矩阵进行下采样。
 import numpy as np
 import math
 
-class filter:
+class Filter:
     def __init__(self, input_matrix, filter_x=2, filter_y=2):
         # 设置滤波器的大小
         self.filter_x = filter_x
@@ -50,17 +50,17 @@ class filter:
 a = np.linspace(1, 12*12*3, 12*12*3).reshape(12, 12, 3).astype(int)
 b = np.ones([12, 13, 3])
 
-a_filter = filter(input_matrix=a)
+a_filter = Filter(input_matrix=a)
 a_filter_mode = a_filter.mode_filter()
 
-b_filter = filter(input_matrix=b)
+b_filter = Filter(input_matrix=b)
 b_filter_mode = b_filter.mode_filter()
 
 import cv2
 from PIL import Image
 
 img=np.array(cv2.imread(r'D:\code\git\python\others\jump_demo\screen.png',cv2.IMREAD_COLOR)).astype(int)
-img_filter = filter(input_matrix=img)
+img_filter = Filter(input_matrix=img)
 img_filter_mode = img_filter.mode_filter().astype(np.uint8)
 
 import imageio
